@@ -1,42 +1,45 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.my-search-input:hover {
+  cursor: pointer;
+  color: black;
+}
+.title {
+  font-size: 22px;
+}
+.category-list:hover {
+  cursor: pointer;
+  margin-left: 1px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* YourComponent.css */
+
+.category-toggle {
+  text-decoration: none; /* Remove underline */
+  color: #333; /* Set text color */
+  text-transform: capitalize;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.category-toggle:hover {
+  color: #555; /* Change text color on hover */
+}
+.categories {
+  text-align: left;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  align-items: center;
+  font-size: 14px;
+}
+.categories:hover {
+  color: #555555; /* Change text color on hover */
+  background-color: #eaeaea;
+}
+.category-toggle {
+  text-align: right;
+  color: rgb(228, 64, 39);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+aside {
+  border: 1px solid #ebebeb;
+  border-radius: 10px;
 }
