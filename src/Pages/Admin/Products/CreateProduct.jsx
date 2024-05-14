@@ -9,6 +9,8 @@ import { ToastContainer, toast } from "react-toastify";
 function CreateProduct() {
   const [product, setProduct] = useState({});
   const [categories, setCategories] = useState([]);
+  const [isLoading, isSetLoading] = useState(true);
+  // const [isBlocking, setIsBlocking] = useState(false);
 
   const fetchCategories = async () => {
     try {
@@ -29,6 +31,7 @@ function CreateProduct() {
     const getCategories = async () => {
       const response = await fetchCategories();
       setCategories(response.payload.data);
+      isSetLoading(false);
     };
 
     getCategories();
@@ -83,20 +86,32 @@ function CreateProduct() {
   };
 
   const handleChange = (event) => {
-    if (event.target.name === "image") {
-      if (event.target.files && event.target.files.length > 0) {
-        const imageUrl = URL.createObjectURL(event.target.files[0]);
-        setProduct({ ...product, imageUrl }); // Set imageUrl in the state
-      }
-    }
     setProduct({ ...product, [event.target.name]: event.target.value });
+    // setIsBlocking(event.target.value.length > 0);
+  };
+
+  const handleImageUpload = async (event) => {
+    // const { value, name } = event;
+    const image = event.target.files[0];
+    //  send image to server as formData
+    const formData = new FormData();
+    formData.append("imageUrl", image);
+    const customAxios = Axios.create();
+    const response = await customAxios.post(
+      "http://localhost:9000/profile",
+      formData
+    );
+    setProduct({
+      ...product,
+      [event.target.name]: response.data.payload.data.path,
+    });
   };
 
   return (
     <>
       <ToastContainer position="top-right" autoClose={3000} />
       <Container className="my-5">
-        <h5>Create Category</h5>
+        <h5>Create Product</h5>
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="productTitleInput">
             <Form.Label>Product Title</Form.Label>
@@ -125,15 +140,6 @@ function CreateProduct() {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group controlId="productImageUrlInput">
-            <Form.Label>Upload Image</Form.Label>
-            <Form.Control
-              type="file"
-              placeholder="Choose a Product Image"
-              name="imageUrl"
-              onChange={handleChange}
-            />
-          </Form.Group>
           <Form.Group controlId="productCategorySelect">
             <Form.Label>Product Category</Form.Label>
             <Form.Select
@@ -141,18 +147,34 @@ function CreateProduct() {
               name="category"
               onChange={handleChange}
             >
-              <option>Select Category</option>
-              {categories.map((category) => {
-                return (
-                  <>
+              {isLoading ? (
+                <option>Loading...</option>
+              ) : (
+                <>
+                  <option value="">Select Category</option>
+                  {categories.map((category) => (
                     <option key={category._id} value={category._id}>
                       {category.title}
                     </option>
-                  </>
-                );
-              })}
+                  ))}
+                </>
+              )}
             </Form.Select>
           </Form.Group>
+
+          <Form.Group controlId="productImageUrlInput">
+            <Form.Label>Upload Image</Form.Label>
+            <Form.Control
+              type="file"
+              placeholder="Choose a Product Image"
+              name="imageUrl"
+              onChange={handleImageUpload}
+            />
+            <Form.Label className="text-success">
+              {product.imageUrl ? "Upload Success: " + product.imageUrl : ""}
+            </Form.Label>
+          </Form.Group>
+
           <Button className="my-3" variant="primary" type="submit">
             Create Category
           </Button>

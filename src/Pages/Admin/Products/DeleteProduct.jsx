@@ -1,7 +1,7 @@
 import Axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-// import { toast } from "react-toastify";
+import { useEffect } from "react";
 
 function DeleteProduct() {
   const navigateTo = useNavigate();
@@ -20,15 +20,19 @@ function DeleteProduct() {
         `http://localhost:9000/api/v1/products/${productId}`
       );
       if (response.status === 200) {
-        navigateTo("/admin/dashboard/products");
-        //  toast.success("Product deleted successfully");
+        navigateTo("/admin/dashboard/products", {
+          state: { msg: response.data.msg, deleted: true },
+        });
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  deleteProductByID();
-}
+  useEffect(() => {
+    deleteProductByID();
+  });
 
+  // deleteProductByID();
+}
 export default DeleteProduct;

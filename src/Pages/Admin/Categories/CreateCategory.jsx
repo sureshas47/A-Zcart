@@ -1,4 +1,3 @@
-import React from "react";
 import { Form, Button, Container } from "react-bootstrap";
 import { useState } from "react";
 import Axios from "axios";
@@ -59,6 +58,10 @@ function CreateCategory() {
   };
 
   const handleChange = (event) => {
+    // const { name, value } = event.target;
+    // setCategory((prevCategory) => {
+    //   return { ...prevCategory, [name]: value };
+    // });
     setCategory({ ...category, [event.target.name]: event.target.value });
   };
 

@@ -3,8 +3,8 @@ import Navbar from "react-bootstrap/Navbar";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-// import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-// import PersonIcon from "@mui/icons-material/Person";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { FaUserLarge } from "react-icons/fa6";
 import "../App.css";
 import { Link } from "react-router-dom";
 
@@ -31,16 +31,10 @@ const Header = () => {
                   </Form>
                 </Col>
                 <Col className="d-none d-md-flex align-items-center justify-content-end">
-                  {/* <ShoppingCartIcon
-                    className="my-search-input"
-                    fontSize="large"
-                    color="action"
-                  /> */}
-                  <p>Shop</p>
+                  <AiOutlineShoppingCart size={30} color="red" />
                   <span className="mx-3"></span>
                   <Link to={"/login"}>
-                    {/* <PersonIcon fontSize="large" color="action" /> */}
-                    <p>Login</p>
+                    <FaUserLarge color="red" size={30} />
                   </Link>{" "}
                 </Col>
               </Row>

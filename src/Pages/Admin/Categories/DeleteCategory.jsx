@@ -1,6 +1,7 @@
 import Axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 // import { toast } from "react-toastify";
 
 function DeleteCategory() {
@@ -30,8 +31,10 @@ function DeleteCategory() {
       console.log(error);
     }
   };
-
-  deleteCategoryByID();
+  useEffect(() => {
+    deleteCategoryByID();
+  });
+  // deleteCategoryByID();
 }
 
 export default DeleteCategory;

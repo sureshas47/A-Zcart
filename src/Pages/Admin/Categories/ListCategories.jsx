@@ -1,3 +1,4 @@
+import React from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import Axios from "axios";
@@ -55,30 +56,32 @@ function ListCategories() {
           <tbody>
             {categories.map((category, index) => {
               return (
-                <tr key={index}>
-                  <td style={{ textTransform: "capitalize" }}>
-                    {category.title}
-                  </td>
-                  <td style={{ textTransform: "capitalize" }}>
-                    {category.slug}
-                  </td>
-                  <td>{category.createdAt}</td>
-                  <td style={{ width: "170px" }}>
-                    <Row>
-                      <Col>
-                        <Link
-                          className="btn btn-danger"
-                          to={`/admin/dashboard/categories/delete/${category._id}`}
-                        >
-                          Delete
-                        </Link>
-                      </Col>
-                      <Col>
-                        <Button className="btn btn-primary">Edit</Button>
-                      </Col>
-                    </Row>
-                  </td>
-                </tr>
+                <React.Fragment key={index}>
+                  <tr>
+                    <td style={{ textTransform: "capitalize" }}>
+                      {category.title}
+                    </td>
+                    <td style={{ textTransform: "capitalize" }}>
+                      {category.slug}
+                    </td>
+                    <td>{category.createdAt}</td>
+                    <td style={{ width: "170px" }}>
+                      <Row>
+                        <Col>
+                          <Link
+                            className="btn btn-danger"
+                            to={`/admin/dashboard/categories/delete/${category._id}`}
+                          >
+                            Delete
+                          </Link>
+                        </Col>
+                        <Col>
+                          <Button className="btn btn-primary">Edit</Button>
+                        </Col>
+                      </Row>
+                    </td>
+                  </tr>
+                </React.Fragment>
               );
             })}
           </tbody>
