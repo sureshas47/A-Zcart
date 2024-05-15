@@ -10,6 +10,11 @@ const categorySchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    // Reference to the Product model
+    // product: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: "Products", // ref should be the name of the collections
+    // },
   },
   {
     timestamps: true,

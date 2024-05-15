@@ -16,6 +16,7 @@ app.use(cors()); // middleware to Enable CORS for all incoming requests
 
 const bodyParser = require("body-parser"); // middleware to send data into body
 app.use(bodyParser.json());
+app.use(express.static(__dirname)); // serve static files for exaple images and other files
 
 // routes
 uploadImage(app);

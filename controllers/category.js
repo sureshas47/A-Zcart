@@ -49,6 +49,7 @@ const createCategory = async (req, res) => {
 
 const getCategories = async (req, res) => {
   try {
+    // const categories = await CategoryModel.find().populate("product");
     const categories = await CategoryModel.find();
     const totalCategories = await CategoryModel.find().count();
     res.send({

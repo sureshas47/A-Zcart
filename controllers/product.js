@@ -110,7 +110,14 @@ const deleteProductById = async (req, res) => {
   try {
     const product_id = req.params.productId;
     const deleteProduct = await ProductModel.findByIdAndDelete(product_id);
-    res.send(deleteProduct);
+    const response = {
+      statusCode: 200,
+      msg: "Product Deleted successfully",
+      payload: {
+        data: deleteProduct,
+      },
+    };
+    res.send(response);
     console.log("DELETED");
   } catch (error) {
     res.send("error while deleting product " + error);
