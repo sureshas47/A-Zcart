@@ -1,22 +1,32 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Table, Button } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { removeProductFromCart } from "../../Redux/features/cart/cartSlice";
+import { useDispatch } from "react-redux";
 
 const Cart = () => {
-  // Sample cart items
-  const [cartItems, setCartItems] = useState([
-    { id: 1, name: "Item 1", price: 10.0, quantity: 2 },
-    { id: 2, name: "Item 2", price: 15.0, quantity: 1 },
-    { id: 3, name: "Item 3", price: 20.0, quantity: 3 },
-  ]);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.carts);
+  let fees = {
+    deliveryFee: 0,
+    serviceCharge: 0,
+  };
 
-  const handleRemove = (id) => {
-    setCartItems(cartItems.filter((item) => item.id !== id));
+  const handleRemove = (itemId) => {
+    // setCartItems(cartItems.filter((item) => item.id !== id));
+    dispatch(removeProductFromCart(itemId));
   };
 
   const getTotal = () => {
     return cartItems
       .reduce((sum, item) => sum + item.price * item.quantity, 0)
       .toFixed(2);
+  };
+
+  const handleContinueShopping = () => {
+    navigate("/");
   };
 
   return (
@@ -35,27 +45,58 @@ const Cart = () => {
         </thead>
         <tbody>
           {cartItems.map((item, index) => (
-            <tr key={item.id}>
-              <td>{index + 1}</td>
-              <td>{item.name}</td>
-              <td>${item.price.toFixed(2)}</td>
-              <td>{item.quantity}</td>
-              <td>${(item.price * item.quantity).toFixed(2)}</td>
-              <td>
-                <Button variant="danger" onClick={() => handleRemove(item.id)}>
-                  Remove
-                </Button>
-              </td>
-            </tr>
+            <>
+              <tr key={item._id}>
+                <td>{index + 1}</td>
+                <td>{item.title}</td>
+                <td>${item.price}</td>
+                <td>{item.quantity}</td>
+                <td>${item.price * item.quantity}</td>
+                <td>
+                  <Button
+                    variant="danger"
+                    onClick={() => handleRemove(item._id)}
+                  >
+                    Remove
+                  </Button>
+                </td>
+              </tr>
+            </>
           ))}
+          <tr className="justify-content-end">
+            <td colSpan="6">
+              <Row className="justify-content-end mt-4">
+                <Col md="auto">
+                  <p>Tax (13%) : ${(getTotal() * 13) / 100}</p>
+                </Col>
+              </Row>
+              <Row className="justify-content-end">
+                <Col md="auto">
+                  <p>
+                    Delivery Fee : $
+                    {+getTotal() > 0 ? (fees.deliveryFee = 5) : 0}
+                  </p>
+                </Col>
+              </Row>
+              <Row className="justify-content-end">
+                <Col md="auto">
+                  <h4>
+                    Total: $
+                    {+getTotal() + fees.deliveryFee + (+getTotal() * 13) / 100}
+                  </h4>
+                </Col>
+              </Row>
+            </td>
+          </tr>
         </tbody>
       </Table>
-      <Row className="justify-content-end">
+
+      <Row className="justify-content-between mt-4">
         <Col md="auto">
-          <h4>Total: ${getTotal()}</h4>
+          <Button onClick={handleContinueShopping} variant="primary">
+            Continue Shopping
+          </Button>
         </Col>
-      </Row>
-      <Row className="justify-content-end">
         <Col md="auto">
           <Button variant="success">Checkout</Button>
         </Col>

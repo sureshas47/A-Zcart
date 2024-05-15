@@ -3,8 +3,11 @@ import { Container, Row, Col, Image, Button, Form } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { fetchSingleProduct } from "../../Redux/features/products/singleProductSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { addProductToCart } from "../../Redux/features/cart/cartSlice";
 
 const ProductDetails = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { productId } = useParams();
 
@@ -13,12 +16,14 @@ const ProductDetails = () => {
   }, [dispatch, productId]);
 
   const product = useSelector((state) => state.singleProduct);
-  console.log(product, "product");
   const [quantity, setQuantity] = useState(1);
 
   const handleAddToCart = () => {
     // Logic to add product to cart
-    console.log(`Added ${quantity} of ${product.name} to cart.`);
+    dispatch(
+      addProductToCart({ ...product?.singleProduct?.product, quantity })
+    );
+    navigate("/cart");
   };
 
   return (

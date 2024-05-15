@@ -25,7 +25,7 @@ const MyRoutes = () => {
       <Route path="/about" element={<About />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/add-to-cart" element={<Cart />} />
+      <Route path="/cart" element={<Cart />} />
       <Route path="/product/:productId" element={<ProductDetails />} />
 
       {/* admin route */}

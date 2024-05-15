@@ -6,13 +6,28 @@ import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
 import { PropTypes } from "prop-types";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { addProductToCart } from "../../Redux/features/cart/cartSlice";
 
 function Products({ products, isLoading, error }) {
-  const handleAddToCart = () => {};
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleAddToCart = (e, product) => {
+    e.preventDefault(); // avoid page refresh
+    e.stopPropagation(); // avoid event bubble
+    const productPayload = { ...product, quantity: 1 };
+    dispatch(addProductToCart(productPayload));
+    toast.success("Product added to cart");
+    // navigate("/cart");
+  };
 
   return (
     <div>
       <Container>
+        <ToastContainer position="bottom-center" autoClose={1000} />
         <Row className="mt-5">
           <h1>Products</h1>
           <Container>
@@ -60,7 +75,10 @@ function Products({ products, isLoading, error }) {
                               )}
                             </span>
                           </Card.Text>
-                          <Button variant="primary" onClick={handleAddToCart}>
+                          <Button
+                            variant="primary"
+                            onClick={(e) => handleAddToCart(e, product)}
+                          >
                             Add To Cart
                           </Button>
                         </Card.Body>

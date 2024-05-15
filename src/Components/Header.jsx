@@ -7,8 +7,10 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FaUserLarge } from "react-icons/fa6";
 import "../App.css";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const productCount = useSelector((state) => state.cart.productCount);
   return (
     <>
       <header>
@@ -31,7 +33,18 @@ const Header = () => {
                   </Form>
                 </Col>
                 <Col className="d-none d-md-flex align-items-center justify-content-end">
-                  <AiOutlineShoppingCart size={30} color="red" />
+                  <Link to={"/cart"} className="text-decoration-none">
+                    <AiOutlineShoppingCart size={30} color="red" />
+                    <sup
+                      style={{
+                        color: "black",
+                        fontSize: "18px",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      {productCount ? productCount : ""}
+                    </sup>
+                  </Link>
                   <span className="mx-3"></span>
                   <Link to={"/login"}>
                     <FaUserLarge color="red" size={30} />
