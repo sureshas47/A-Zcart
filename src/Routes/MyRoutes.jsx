@@ -12,6 +12,8 @@ import CreateProduct from "../Pages/Admin/Products/CreateProduct";
 import ErrorPage from "../Pages/ErrorPage";
 import DeleteCategory from "../Pages/Admin/Categories/DeleteCategory";
 import DeleteProduct from "../Pages/Admin/Products/DeleteProduct";
+import Cart from "../Components/PageComponents/Cart";
+import ProductDetails from "../Components/PageComponents/ProductDetails";
 
 const MyRoutes = () => {
   // const user = useSelector((state) => state.user.userData);
@@ -23,11 +25,13 @@ const MyRoutes = () => {
       <Route path="/about" element={<About />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/add-to-cart" element={<Cart />} />
+      <Route path="/product/:productId" element={<ProductDetails />} />
 
       {/* admin route */}
       <Route path="/admin/dashboard" element={<Admin />} />
       <Route path="/unauthorized" element={<ErrorPage />} />
-      {/* category routes */}
+
       <Route
         path="/admin/dashboard/categories/create"
         element={<CreateCategory />}
@@ -36,7 +40,6 @@ const MyRoutes = () => {
         path="/admin/dashboard/categories/delete/:categoryId"
         element={<DeleteCategory />}
       />
-
       {/* <Route
         path="/admin/dashboard/categories/create"
         element={
@@ -50,8 +53,6 @@ const MyRoutes = () => {
         }
       /> */}
       <Route path="/admin/dashboard/categories" element={<ListCategories />} />
-
-      {/* product routes */}
       <Route path="/admin/dashboard/products" element={<ListProducts />} />
       <Route
         path="/admin/dashboard/products/create"

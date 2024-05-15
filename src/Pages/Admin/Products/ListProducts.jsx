@@ -82,7 +82,7 @@ function ListProducts() {
                     <td>{product.description}</td>
                     <td>{product?.category?.title}</td>
                     <td>{product.createdAt}</td>
-                    <td>{product.isInStock}</td>
+                    <td>{product.isInStock ? "In Stock" : "Out of Stock"}</td>
                     <td>
                       <img
                         src={`http://localhost:9000/${product.imageUrl}`}

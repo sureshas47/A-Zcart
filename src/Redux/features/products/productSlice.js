@@ -25,7 +25,6 @@ export const productSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
-      console.log("Product data", action.payload);
       state.isLoading = false;
       state.productData = action.payload;
     });

@@ -1,0 +1,84 @@
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/esm/Row";
+import Col from "react-bootstrap/esm/Col";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Spinner from "react-bootstrap/Spinner";
+import { PropTypes } from "prop-types";
+import { Link } from "react-router-dom";
+
+function Products({ products, isLoading, error }) {
+  const handleAddToCart = () => {};
+
+  return (
+    <div>
+      <Container>
+        <Row className="mt-5">
+          <h1>Products</h1>
+          <Container>
+            <Row className="g-3">
+              {isLoading && (
+                <Col>
+                  <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </Spinner>
+                </Col>
+              )}
+              {error && (
+                <Col>
+                  <p>{error}</p>
+                </Col>
+              )}
+              {!isLoading &&
+                !error &&
+                products?.map((product) => (
+                  <Col key={product?._id} sm={6} md={4} lg>
+                    <Link
+                      className="text-decoration-none"
+                      to={`/product/${product?._id}`}
+                    >
+                      <Card style={{ width: "14rem" }}>
+                        <Card.Img
+                          variant="top"
+                          src={`http://localhost:9000/${product?.imageUrl}`}
+                        />
+                        <Card.Body>
+                          <Card.Title>{product?.title}</Card.Title>
+                          <Card.Text>{product?.description}</Card.Text>{" "}
+                          <Card.Text className="text-muted">
+                            {product?.category?.title}
+                          </Card.Text>
+                          <Card.Text>
+                            CAD {product?.price}/-{" "}
+                            <span className="w-100">
+                              {product.isInStock ? (
+                                <small className="text-success">In Stock</small>
+                              ) : (
+                                <small className="text-danger">
+                                  Not In Stock
+                                </small>
+                              )}
+                            </span>
+                          </Card.Text>
+                          <Button variant="primary" onClick={handleAddToCart}>
+                            Add To Cart
+                          </Button>
+                        </Card.Body>
+                      </Card>
+                    </Link>
+                  </Col>
+                ))}
+            </Row>
+          </Container>
+        </Row>
+      </Container>
+    </div>
+  );
+}
+Products.propTypes = {
+  products: PropTypes.array,
+  isLoading: PropTypes.bool,
+  error: PropTypes.string,
+};
+
+export default Products;
