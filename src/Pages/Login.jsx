@@ -11,6 +11,7 @@ import { setUserData } from "../Redux/features/user/userSlice";
 import { useDispatch } from "react-redux";
 import { getUserDetailsFromToken } from "../helpers/jwt";
 import { ToastContainer, toast } from "react-toastify";
+import PageLayout from "../Components/Layout/PageLayout";
 
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState({});
@@ -72,54 +73,56 @@ const Login = () => {
 
   return (
     <>
-      <Container>
-        <ToastContainer position="top-right" autoClose={3000} />
-        <div
-          className="modal show"
-          style={{ display: "block", position: "initial" }}
-        >
-          <Modal.Dialog>
-            <Modal.Header closeButton>
-              <Modal.Title>Login to an account</Modal.Title>
-            </Modal.Header>
+      <PageLayout>
+        <Container>
+          <ToastContainer position="top-right" autoClose={3000} />
+          <div
+            className="modal show"
+            style={{ display: "block", position: "initial" }}
+          >
+            <Modal.Dialog>
+              <Modal.Header closeButton>
+                <Modal.Title>Login to an account</Modal.Title>
+              </Modal.Header>
 
-            <Modal.Body>
-              <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Email address</Form.Label>
-                  <Form.Control
-                    type="email"
-                    placeholder="Enter email"
-                    name="email"
-                    onChange={handleChange}
-                  />
-                </Form.Group>
+              <Modal.Body>
+                <Form onSubmit={handleSubmit}>
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control
+                      type="email"
+                      placeholder="Enter email"
+                      name="email"
+                      onChange={handleChange}
+                    />
+                  </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control
-                    type="password"
-                    placeholder="Enter Password"
-                    name="password"
-                    onChange={handleChange}
-                  />
-                </Form.Group>
+                  <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                      type="password"
+                      placeholder="Enter Password"
+                      name="password"
+                      onChange={handleChange}
+                    />
+                  </Form.Group>
 
-                <Modal.Footer className="d-flex justify-content-between align-items-center">
-                  <Button
-                    className="w-100 mb-3"
-                    variant="primary"
-                    type="submit"
-                  >
-                    Login
-                  </Button>
-                  <Link to="/register"> Not have an account? Register</Link>
-                </Modal.Footer>
-              </Form>
-            </Modal.Body>
-          </Modal.Dialog>
-        </div>
-      </Container>
+                  <Modal.Footer className="d-flex justify-content-between align-items-center">
+                    <Button
+                      className="w-100 mb-3"
+                      variant="primary"
+                      type="submit"
+                    >
+                      Login
+                    </Button>
+                    <Link to="/register"> Not have an account? Register</Link>
+                  </Modal.Footer>
+                </Form>
+              </Modal.Body>
+            </Modal.Dialog>
+          </div>
+        </Container>
+      </PageLayout>
     </>
   );
 };

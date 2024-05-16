@@ -26,12 +26,13 @@ const Layout = ({ children }) => {
         {/* <Main children={children} /> */}
         <main>{children}</main>
       </Row>
+
       <Footer />
     </>
   );
 };
 
-Layout.prototypes = {
+Layout.propTypes = {
   children: PropTypes.node.isRequired,
 };
 

@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { getUserData } from "./Redux/features/user/userSlice";
 
 function App() {
-  const [cookies] = useCookies(["accessToken"]);
+  const [cookies] = useCookies(["accessToken"]); // get cookie
   const dispatch = useDispatch();
 
   useEffect(() => {
