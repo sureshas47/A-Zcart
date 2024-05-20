@@ -15,14 +15,16 @@ dbConnection(); //connect to database
 app.use(cors()); // middleware to Enable CORS for all incoming requests
 
 const bodyParser = require("body-parser"); // middleware to send data into body
+const { orderRoutes } = require("./routes/order");
 app.use(bodyParser.json());
-app.use(express.static(__dirname)); // serve static files for exaple images and other files
+app.use(express.static(__dirname)); // serve static files for example images and other files
 
 // routes
 uploadImage(app);
-productRoutes(app); // products crud operation
-userRoute(app); // add / login user
+productRoutes(app);
+userRoute(app);
 categoryRoute(app);
+orderRoutes(app);
 
 // server starting
 const PORT = 9000;

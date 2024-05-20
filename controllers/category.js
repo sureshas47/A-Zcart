@@ -43,7 +43,10 @@ const createCategory = async (req, res) => {
       }
     }
   } catch (error) {
-    res.send("Error while creating category" + error);
+    res.send(error.json);
+    // res.json(error);
+    // console.log(error);
+    // res.send("Error while creating category" + error);
   }
 };
 

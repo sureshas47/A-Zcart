@@ -4,29 +4,28 @@ const productSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: true,
+      required: [true, "Product title is required"],
     },
     slug: {
       type: String,
-      required: true,
+      required: [true, "Product slug is required"],
     },
     price: {
-      type: String,
-      required: true,
+      type: Number,
+      required: [true, "Product price is required"],
     },
     description: {
       type: String,
-      required: true,
+      required: [true, "Product description is required"],
     },
     isInStock: {
       type: Boolean,
-      default: true,
       enum: [true, false],
       default: true,
     },
     imageUrl: {
       type: String,
-      required: true,
+      required: [true, "Product image url is required"],
     },
     // Reference to the Category model
     category: {
