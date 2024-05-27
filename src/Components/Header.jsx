@@ -7,12 +7,22 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FaUserLarge } from "react-icons/fa6";
 import "../App.css";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Dropdown from "react-bootstrap/Dropdown";
+import { logoutUser } from "../Redux/features/user/userSlice";
+import { useCookies } from "react-cookie";
 
 const Header = () => {
   const productCount = useSelector((state) => state.cart.productCount);
   const user = useSelector((state) => state.user.userData);
+  const { isLoggedIn } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const [cookie, setCookie, removeCookie] = useCookies(["user"]);
+
+  const handleLogout = () => {
+    removeCookie("accessToken");
+    dispatch(logoutUser());
+  };
   return (
     <>
       <header>
@@ -38,29 +48,36 @@ const Header = () => {
                   <AiOutlineShoppingCart size={30} color="red" />
                   <sup
                     style={{
-                      color: "black",
                       fontSize: "18px",
                       fontWeight: "bold",
+                      color: "black",
                     }}
                   >
                     {productCount ? productCount : ""}
                   </sup>
                 </Link>
-                <span className="mx-3"></span>
               </Col>
 
               <Col>
-                <Dropdown>
-                  <Dropdown.Toggle variant="light" id="dropdown-basic">
+                {isLoggedIn ? (
+                  <Dropdown>
+                    <Dropdown.Toggle variant="light" id="dropdown-basic">
+                      <FaUserLarge color="red" size={25} />
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item href="#">{user?.email}</Dropdown.Item>
+                      <Dropdown.Item href="#">{user?.userName}</Dropdown.Item>
+                      <Dropdown.Divider />
+                      <Dropdown.Item onClick={handleLogout}>
+                        Logout
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                ) : (
+                  <Link to={"/login"}>
                     <FaUserLarge color="red" size={25} />
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="#">{user?.email}</Dropdown.Item>
-                    <Dropdown.Item href="#">{user?.userName}</Dropdown.Item>
-                    <Dropdown.Divider />
-                    <Dropdown.Item href="#">Logout</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
+                  </Link>
+                )}
               </Col>
             </Row>
           </Container>

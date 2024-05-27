@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "../Pages/Home";
 import About from "../Pages/About";
 import Register from "../Pages/Register";
@@ -14,54 +14,46 @@ import DeleteCategory from "../Pages/Admin/Categories/DeleteCategory";
 import DeleteProduct from "../Pages/Admin/Products/DeleteProduct";
 import Cart from "../Components/PageComponents/Cart";
 import ProductDetails from "../Components/PageComponents/ProductDetails";
+import Checkout from "../Components/PageComponents/Checkout";
+import UserLayout from "../Components/Layout/UserLayout";
+import PageLayout from "../Components/Layout/PageLayout";
+import AdminLayout from "../Components/Layout/AdminLayout";
+import { useSelector } from "react-redux";
 
 const MyRoutes = () => {
-  // const user = useSelector((state) => state.user.userData);
+  const user = useSelector((state) => state.user.userData);
   // const location = useLocation();
 
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="/product/:productId" element={<ProductDetails />} />
+      {/* User route 1 */}
+      <Route element={<UserLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Route>
+      {/* User route 2 */}
+      <Route element={<PageLayout />}>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/product/:productId" element={<ProductDetails />} />
+        <Route path="/checkout" element={<Checkout />} />
+      </Route>
 
-      {/* admin route */}
-      <Route path="/admin/dashboard" element={<Admin />} />
-      <Route path="/unauthorized" element={<ErrorPage />} />
-
-      <Route
-        path="/admin/dashboard/categories/create"
-        element={<CreateCategory />}
-      />
-      <Route
-        path="/admin/dashboard/categories/delete/:categoryId"
-        element={<DeleteCategory />}
-      />
-      {/* <Route
-        path="/admin/dashboard/categories/create"
-        element={
-          user?.userType === "admin" ? (
-            // Only render CreateCategory for admin users
-            <CreateCategory />
-          ) : (
-            // Redirect other users to the unauthorized page
-            <Navigate to="/unauthorized" replace />
-          )
-        }
-      /> */}
-      <Route path="/admin/dashboard/categories" element={<ListCategories />} />
-      <Route path="/admin/dashboard/products" element={<ListProducts />} />
-      <Route
-        path="/admin/dashboard/products/create"
-        element={<CreateProduct />}
-      />
-      <Route
-        path="/admin/dashboard/products/delete/:productId"
-        element={<DeleteProduct />}
-      />
+      {/* Admin route */}
+      <Route path="admin" element={<AdminLayout />}>
+        <Route path="dashboard" element={<Admin />} />
+        <Route path="unauthorized" element={<ErrorPage />} />
+        <Route path="categories/create" element={<CreateCategory />} />
+        <Route
+          path="categories/delete/:categoryId"
+          element={<DeleteCategory />}
+        />
+        <Route path="categories" element={<ListCategories />} />
+        <Route path="products" element={<ListProducts />} />
+        <Route path="products/create" element={<CreateProduct />} />
+        <Route path="products/delete/:productId" element={<DeleteProduct />} />
+      </Route>
     </Routes>
   );
 };

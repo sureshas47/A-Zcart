@@ -1,0 +1,32 @@
+name: CI/CD for A-Z
+on:
+  push:
+    branches: [feature-frontend]
+  workflow_dispatch: # allowing  manual trigger
+
+permissions: # allowing entire work flow to be deployed
+  contents: write
+
+jobs:
+  build_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: jamesIves/github-pages-deploy-action@v4.1.0
+        with:
+          branch: gh-pages
+          folder: build

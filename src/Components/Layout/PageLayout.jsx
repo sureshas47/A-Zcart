@@ -1,28 +1,23 @@
 import Header from "../Header";
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/esm/Row";
-import Col from "react-bootstrap/esm/Col";
-import Aside from "../Aside";
-import Banner from "../Banner";
 import Footer from "../Footer";
-import PropTypes from "prop-types"; // Import PropTypes
+import { Outlet } from "react-router-dom";
+import { Container } from "react-bootstrap";
 
-const PageLayout = ({ children }) => {
+const PageLayout = () => {
   return (
     <>
       <Header />
-      <Row>
-        {/* <Main children={children} /> */}
-        <main>{children}</main>
-      </Row>
+      <Container>
+        <Row>
+          {/* outlet autometically renders its children from the parent route */}
+          <Outlet />
+        </Row>
+      </Container>
 
       <Footer />
     </>
   );
-};
-
-PageLayout.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default PageLayout;

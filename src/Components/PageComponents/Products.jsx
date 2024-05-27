@@ -6,22 +6,19 @@ import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
 import { PropTypes } from "prop-types";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { addProductToCart } from "../../Redux/features/cart/cartSlice";
 
 function Products({ products, isLoading, error }) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleAddToCart = (e, product) => {
     e.preventDefault(); // avoid page refresh
     e.stopPropagation(); // avoid event bubble
-    const productPayload = { ...product, quantity: 1 };
+    const productPayload = { id: product?._id, ...product, quantity: 1 };
     dispatch(addProductToCart(productPayload));
     toast.success("Product added to cart");
-    // navigate("/cart");
   };
 
   return (

@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import HomeLayout from "../Components/Layout/HomeLayout";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../Redux/features/products/productSlice";
 import Products from "../Components/PageComponents/Products";
@@ -19,9 +18,7 @@ const Home = () => {
 
   return (
     <>
-      <HomeLayout>
-        <Products products={products} isLoading={isLoading} error={error} />
-      </HomeLayout>
+      <Products products={products} isLoading={isLoading} error={error} />
     </>
   );
 };

@@ -59,7 +59,7 @@ function CreateProduct() {
           icon: "✅",
         });
         setTimeout(() => {
-          navigateTo("/admin/dashboard/products");
+          navigateTo("/admin/products");
         }, 1000);
       }
 
@@ -68,7 +68,7 @@ function CreateProduct() {
           icon: "⚠️",
         });
         setTimeout(() => {
-          navigateTo("/admin/dashboard/products/create");
+          navigateTo("/admin/products/create");
         }, 1000);
       }
 

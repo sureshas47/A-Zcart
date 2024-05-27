@@ -24,6 +24,12 @@ export const userSlice = createSlice({
       state.isLoggedIn = !isEmpty(state.userData);
     },
 
+    logoutUser: (state) => {
+      state.userData = {};
+      state.tokens = { accessToken: "", refreshToken: "" };
+      state.isLoggedIn = false;
+    },
+
     getUserData: (state, action) => {
       const token = action?.payload;
       // set user data, token, isLoggedIn in global state
@@ -40,6 +46,6 @@ export const userSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setUserData, getUserData } = userSlice.actions; // exporting accessToken action from userSlice
+export const { setUserData, getUserData, logoutUser } = userSlice.actions; // exporting accessToken action from userSlice
 
 export default userSlice.reducer;

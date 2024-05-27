@@ -5,9 +5,9 @@ import Col from "react-bootstrap/esm/Col";
 import Aside from "../Aside";
 import Banner from "../Banner";
 import Footer from "../Footer";
-import PropTypes from "prop-types"; // Import PropTypes
+import { Outlet } from "react-router-dom";
 
-const Layout = ({ children }) => {
+const UserLayout = () => {
   return (
     <>
       <Header />
@@ -23,8 +23,8 @@ const Layout = ({ children }) => {
         </Row>
       </Container>
       <Row>
-        {/* <Main children={children} /> */}
-        <main>{children}</main>
+        {/* outlet autometically renders its children from the parent route */}
+        <Outlet />
       </Row>
 
       <Footer />
@@ -32,8 +32,4 @@ const Layout = ({ children }) => {
   );
 };
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-export default Layout;
+export default UserLayout;
