@@ -4,6 +4,7 @@ import Table from "react-bootstrap/Table";
 import Axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import baseUrl from "../../../utils/url";
 
 function ListCategories() {
   const [categories, setCategories] = useState([]);
@@ -13,9 +14,7 @@ function ListCategories() {
       const instance = Axios.create({
         headers: { "Content-Type": "application/json" },
       });
-      const response = await instance.get(
-        "http://localhost:9000/api/v1/categories"
-      );
+      const response = await instance.get(`${baseUrl}/categories`);
       return response.data;
     } catch (error) {
       console.error("Error fetching categories:", error);

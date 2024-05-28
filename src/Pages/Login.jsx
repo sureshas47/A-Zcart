@@ -11,6 +11,7 @@ import { setUserData } from "../Redux/features/user/userSlice";
 import { useDispatch } from "react-redux";
 import { getUserDetailsFromToken } from "../helpers/jwt";
 import { ToastContainer, toast } from "react-toastify";
+import baseUrl from "../utils/url";
 
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState({});
@@ -31,10 +32,7 @@ const Login = () => {
           "Content-Type": "application/json",
         },
       });
-      const response = await customAxios.post(
-        "http://localhost:9000/api/v1/login",
-        loginInfo
-      );
+      const response = await customAxios.post(`${baseUrl}/login`, loginInfo);
       removeCookie("accessToken"); // removing previous token
       setCookie("accessToken", response.data.token); // setting token in a cookie
       dispatch(setUserData(response.data.token)); // dispatch action

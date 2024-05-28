@@ -5,6 +5,7 @@ import { fetchSingleProduct } from "../../Redux/features/products/singleProductS
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addProductToCart } from "../../Redux/features/cart/cartSlice";
+import { domain } from "../../utils/url";
 
 const ProductDetails = () => {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ const ProductDetails = () => {
         <Row className="my-4">
           <Col md={6}>
             <Image
-              src={`http://localhost:9000/${product?.singleProduct?.product?.imageUrl}`}
+              src={`${domain}/${product?.singleProduct?.product?.imageUrl}`}
               fluid
             />
           </Col>

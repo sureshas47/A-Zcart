@@ -8,6 +8,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import baseUrl from "../utils/url";
 
 const Register = () => {
   const [registerationInfo, setRegisterationInfo] = useState({});
@@ -30,7 +31,7 @@ const Register = () => {
         },
       });
       const response = await customAxios.post(
-        "http://localhost:9000/api/v1/signup",
+        `${baseUrl}/signup`,
         registerationInfo
       );
       // toast

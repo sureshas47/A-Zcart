@@ -4,6 +4,7 @@ import Axios from "axios";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import baseUrl from "../../../utils/url";
 
 function CreateCategory() {
   const [category, setCategory] = useState({});
@@ -22,7 +23,7 @@ function CreateCategory() {
       });
 
       const response = await customAxios.post(
-        "http://localhost:9000/api/v1/categories/create",
+        `${baseUrl}/categories/create`,
         category
       );
 

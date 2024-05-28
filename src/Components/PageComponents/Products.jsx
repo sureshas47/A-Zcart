@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { addProductToCart } from "../../Redux/features/cart/cartSlice";
+import { domain } from "../../utils/url";
 
 function Products({ products, isLoading, error }) {
   const dispatch = useDispatch();
@@ -52,7 +53,7 @@ function Products({ products, isLoading, error }) {
                       <Card style={{ width: "14rem" }}>
                         <Card.Img
                           variant="top"
-                          src={`http://localhost:9000/${product?.imageUrl}`}
+                          src={`${domain}/${product?.imageUrl}`}
                         />
                         <Card.Body>
                           <Card.Title>{product?.title}</Card.Title>

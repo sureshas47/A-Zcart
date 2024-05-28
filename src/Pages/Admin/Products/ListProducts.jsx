@@ -5,6 +5,8 @@ import Table from "react-bootstrap/Table";
 import Axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import baseUrl from "../../../utils/url";
+import { domain } from "../../../utils/url";
 
 function ListProducts() {
   const [products, setProducts] = useState([]);
@@ -21,9 +23,7 @@ function ListProducts() {
       const instance = Axios.create({
         headers: { "Content-Type": "application/json" },
       });
-      const response = await instance.get(
-        "http://localhost:9000/api/v1/products"
-      );
+      const response = await instance.get(`${baseUrl}/products`);
       return response.data;
     } catch (error) {
       return []; // Return empty array in case of error
@@ -85,7 +85,7 @@ function ListProducts() {
                     <td>{product.isInStock ? "In Stock" : "Out of Stock"}</td>
                     <td>
                       <img
-                        src={`http://localhost:9000/${product.imageUrl}`}
+                        src={`${domain}/${product.imageUrl}`}
                         width={100}
                         height={100}
                         alt={`${product.slug}`}

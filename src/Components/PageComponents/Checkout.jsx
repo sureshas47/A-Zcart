@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { useSelector } from "react-redux";
+import { domain } from "../../utils/url";
 
 function Checkout() {
   const [formData, setFormData] = React.useState({});
@@ -173,7 +174,7 @@ function Checkout() {
                   <Col lg={2}>
                     <Image
                       style={{ height: "100px", width: "100px" }}
-                      src={`http://localhost:9000/${cart?.imageUrl}`}
+                      src={`${domain}/${cart?.imageUrl}`}
                       fluid
                     />
                   </Col>

@@ -2,6 +2,7 @@ import Axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import baseUrl from "../../../utils/url";
 // import { toast } from "react-toastify";
 
 function DeleteCategory() {
@@ -19,7 +20,7 @@ function DeleteCategory() {
         },
       });
       const response = await instance.delete(
-        `http://localhost:9000/api/v1/categories/${categoryId}`
+        `${baseUrl}/categories/${categoryId}`
       );
       if (response.status === 200) {
         // toast.success("Category deleted successfully");

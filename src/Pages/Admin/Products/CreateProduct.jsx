@@ -1,10 +1,10 @@
-import React from "react";
 import { Form, Button, Container } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import baseUrl from "../../../utils/url";
 
 function CreateProduct() {
   const [product, setProduct] = useState({});
@@ -17,9 +17,7 @@ function CreateProduct() {
       const instance = Axios.create({
         headers: { "Content-Type": "application/json" },
       });
-      const response = await instance.get(
-        "http://localhost:9000/api/v1/categories"
-      );
+      const response = await instance.get(`${baseUrl}/categories`);
       return response.data;
     } catch (error) {
       console.error("Error fetching categories:", error);
