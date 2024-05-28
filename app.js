@@ -1,4 +1,5 @@
 // packages import
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
@@ -27,7 +28,7 @@ categoryRoute(app);
 orderRoutes(app);
 
 // server starting
-const PORT = 9000;
+const PORT = process.env.PORT || 9000;
 app.listen(PORT, (req, res) => {
   console.log("server running at port: " + PORT);
 });
