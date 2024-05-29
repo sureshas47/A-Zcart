@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "../Pages/Home";
 import About from "../Pages/About";
 import Register from "../Pages/Register";
@@ -8,7 +8,6 @@ import ListCategories from "../Pages/Admin/Categories/ListCategories";
 import CreateCategory from "../Pages/Admin/Categories/CreateCategory";
 import ListProducts from "../Pages/Admin/Products/ListProducts";
 import CreateProduct from "../Pages/Admin/Products/CreateProduct";
-// import { useSelector } from "react-redux";
 import ErrorPage from "../Pages/ErrorPage";
 import DeleteCategory from "../Pages/Admin/Categories/DeleteCategory";
 import DeleteProduct from "../Pages/Admin/Products/DeleteProduct";
@@ -23,18 +22,19 @@ import { useSelector } from "react-redux";
 const MyRoutes = () => {
   const user = useSelector((state) => state.user.userData);
 
-  // const location = useLocation();
-  // A-Zcart is the base url for all routes, see vite.config.js
-
   return (
     <Routes>
-      {/* User route 1 */}
-      <Route path="/A-Zcart" element={<UserLayout />}>
-        <Route path="/A-Zcart" element={<Home />} />
+      {/* User route */}
+      <Route path="/A-Zcart/user" element={<UserLayout />}>
+        <Route index element={<Home />} />
         <Route path="about" element={<About />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route path="checkout" element={<Checkout />} />
       </Route>
-      {/* User route 2 */}
-      <Route element={<PageLayout />}>
+
+      {/* Page route */}
+      <Route path="/A-Zcart/page" element={<PageLayout />}>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="cart" element={<Cart />} />
@@ -43,7 +43,7 @@ const MyRoutes = () => {
       </Route>
 
       {/* Admin route */}
-      <Route element={<AdminLayout />}>
+      <Route path="/A-Zcart/admin" element={<AdminLayout />}>
         <Route path="dashboard" element={<Admin />} />
         <Route path="unauthorized" element={<ErrorPage />} />
         <Route path="categories/create" element={<CreateCategory />} />

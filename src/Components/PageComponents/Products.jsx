@@ -49,7 +49,7 @@ function Products({ products, isLoading, error }) {
                   <Col key={product?._id} sm={6} md={4} lg>
                     <Link
                       className="text-decoration-none"
-                      to={`/product/${product?._id}`}
+                      to={`/A-Zcart/page/product/${product?._id}`}
                     >
                       <Card style={{ width: "14rem" }}>
                         <Card.Img

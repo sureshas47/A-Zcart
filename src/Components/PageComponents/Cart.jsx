@@ -21,7 +21,7 @@ const Cart = () => {
   };
 
   const handleContinueShopping = () => {
-    navigate("/");
+    navigate("/A-Zcart/user");
   };
 
   return (
@@ -80,7 +80,7 @@ const Cart = () => {
           <Col md="auto">
             <Button
               className={cartItems.length === 0 ? "disabled" : ""}
-              onClick={() => navigate("/checkout")}
+              onClick={() => navigate("/A-Zcart/page/checkout")}
               variant="success"
             >
               Checkout

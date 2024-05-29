@@ -27,7 +27,7 @@ const ProductDetails = () => {
         quantity,
       })
     );
-    navigate("/cart");
+    navigate("/A-Zcart/page/cart");
   };
 
   // Logic to add product to cart
