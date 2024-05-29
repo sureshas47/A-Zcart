@@ -34,7 +34,7 @@ const MyRoutes = () => {
         <Route path="about" element={<About />} />
       </Route>
       {/* User route 2 */}
-      <Route path="/A-Zcart" element={<PageLayout />}>
+      <Route element={<PageLayout />}>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="cart" element={<Cart />} />
@@ -43,7 +43,7 @@ const MyRoutes = () => {
       </Route>
 
       {/* Admin route */}
-      <Route path="/A-Zcart" element={<AdminLayout />}>
+      <Route element={<AdminLayout />}>
         <Route path="dashboard" element={<Admin />} />
         <Route path="unauthorized" element={<ErrorPage />} />
         <Route path="categories/create" element={<CreateCategory />} />
