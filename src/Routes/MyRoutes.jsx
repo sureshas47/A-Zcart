@@ -35,32 +35,26 @@ const MyRoutes = () => {
       </Route>
       {/* User route 2 */}
       <Route element={<PageLayout />}>
-        <Route path="/A-Zcart/login" element={<Login />} />
-        <Route path="/A-Zcart/register" element={<Register />} />
-        <Route path="/A-Zcart/cart" element={<Cart />} />
-        <Route
-          path="/A-Zcart/product/:productId"
-          element={<ProductDetails />}
-        />
-        <Route path="/A-Zcart/checkout" element={<Checkout />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="product/:productId" element={<ProductDetails />} />
+        <Route path="checkout" element={<Checkout />} />
       </Route>
 
       {/* Admin route */}
       <Route path="/A-Zcart/admin" element={<AdminLayout />}>
-        <Route path="/A-Zcart/dashboard" element={<Admin />} />
-        <Route path="/A-Zcart/unauthorized" element={<ErrorPage />} />
-        <Route path="/A-Zcart/categories/create" element={<CreateCategory />} />
+        <Route path="dashboard" element={<Admin />} />
+        <Route path="unauthorized" element={<ErrorPage />} />
+        <Route path="categories/create" element={<CreateCategory />} />
         <Route
-          path="/A-Zcart/categories/delete/:categoryId"
+          path="categories/delete/:categoryId"
           element={<DeleteCategory />}
         />
-        <Route path="/A-Zcart/categories" element={<ListCategories />} />
-        <Route path="/A-Zcart/products" element={<ListProducts />} />
-        <Route path="/A-Zcart/products/create" element={<CreateProduct />} />
-        <Route
-          path="/A-Zcart/products/delete/:productId"
-          element={<DeleteProduct />}
-        />
+        <Route path="categories" element={<ListCategories />} />
+        <Route path="products" element={<ListProducts />} />
+        <Route path="products/create" element={<CreateProduct />} />
+        <Route path="products/delete/:productId" element={<DeleteProduct />} />
       </Route>
     </Routes>
   );
