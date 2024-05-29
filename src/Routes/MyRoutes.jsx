@@ -29,7 +29,7 @@ const MyRoutes = () => {
   return (
     <Routes>
       {/* User route 1 */}
-      <Route element={<UserLayout />}>
+      <Route path="/A-Zcart" element={<UserLayout />}>
         <Route path="/A-Zcart" element={<Home />} />
         <Route path="about" element={<About />} />
       </Route>
