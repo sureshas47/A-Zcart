@@ -29,8 +29,8 @@ const MyRoutes = () => {
   return (
     <Routes>
       {/* User route 1 */}
-      <Route path="/A-Zcart" element={<UserLayout />}>
-        <Route path="/" element={<Home />} />
+      <Route element={<UserLayout />}>
+        <Route path="/A-Zcart" element={<Home />} />
         <Route path="about" element={<About />} />
       </Route>
       {/* User route 2 */}
