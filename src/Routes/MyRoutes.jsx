@@ -43,7 +43,7 @@ const MyRoutes = () => {
       </Route>
 
       {/* Admin route */}
-      <Route path="/A-Zcart/admin" element={<AdminLayout />}>
+      <Route path="/A-Zcart" element={<AdminLayout />}>
         <Route path="dashboard" element={<Admin />} />
         <Route path="unauthorized" element={<ErrorPage />} />
         <Route path="categories/create" element={<CreateCategory />} />
