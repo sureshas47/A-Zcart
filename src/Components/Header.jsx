@@ -30,9 +30,9 @@ const Header = () => {
           <Container>
             <Row className="d-flex justify-content-between align-items-center w-100">
               <Col className="d-flex align-items-center">
-                <Navbar.Brand className="text-dark" href="/">
-                  A-Z Cart
-                </Navbar.Brand>
+                <Link to={"/"} className="text-decoration-none">
+                  <Navbar.Brand className="text-dark">A-Z Cart</Navbar.Brand>
+                </Link>
               </Col>
               <Col md={6} className="d-flex align-items-center">
                 <Form inline className="w-100">
