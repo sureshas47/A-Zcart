@@ -29,12 +29,12 @@ const MyRoutes = () => {
   return (
     <Routes>
       {/* User route 1 */}
-      <Route element={<UserLayout />}>
-        <Route path="/A-Zcart" element={<Home />} />
-        <Route path="/A-Zcart/about" element={<About />} />
+      <Route path="/A-Zcart" element={<UserLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="about" element={<About />} />
       </Route>
       {/* User route 2 */}
-      <Route element={<PageLayout />}>
+      <Route path="/A-Zcart" element={<PageLayout />}>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="cart" element={<Cart />} />
