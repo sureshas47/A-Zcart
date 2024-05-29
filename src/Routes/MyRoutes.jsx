@@ -28,7 +28,6 @@ const MyRoutes = () => {
       <Route path="/A-Zcart/user" element={<UserLayout />}>
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
-        <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="checkout" element={<Checkout />} />
       </Route>
