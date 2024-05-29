@@ -2,10 +2,11 @@ import Axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import baseUrl from "../../../utils/url";
+
 // import { toast } from "react-toastify";
 
 function DeleteCategory() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const navigateTo = useNavigate();
   const { tokens } = useSelector((state) => state.user);
   console.log(tokens, "TOKEN");

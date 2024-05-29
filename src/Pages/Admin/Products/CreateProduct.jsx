@@ -4,9 +4,9 @@ import Axios from "axios";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import baseUrl from "../../../utils/url";
 
 function CreateProduct() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const [product, setProduct] = useState({});
   const [categories, setCategories] = useState([]);
   const [isLoading, isSetLoading] = useState(true);

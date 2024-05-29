@@ -4,9 +4,9 @@ import Axios from "axios";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import baseUrl from "../../../utils/url";
 
 function CreateCategory() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const [category, setCategory] = useState({});
   const { tokens } = useSelector((state) => state.user); // get token from store
   const navigateTo = useNavigate();

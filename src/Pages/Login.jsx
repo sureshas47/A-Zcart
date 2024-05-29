@@ -11,9 +11,10 @@ import { setUserData } from "../Redux/features/user/userSlice";
 import { useDispatch } from "react-redux";
 import { getUserDetailsFromToken } from "../helpers/jwt";
 import { ToastContainer, toast } from "react-toastify";
-import baseUrl from "../utils/url";
 
 const Login = () => {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
   const [loginInfo, setLoginInfo] = useState({});
   const dispatch = useDispatch();
 

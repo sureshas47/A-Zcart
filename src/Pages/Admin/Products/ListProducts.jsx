@@ -5,10 +5,10 @@ import Table from "react-bootstrap/Table";
 import Axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import baseUrl from "../../../utils/url";
-import { domain } from "../../../utils/url";
 
 function ListProducts() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
+  const domain = import.meta.env.VITE_DOMAIN;
   const [products, setProducts] = useState([]);
   // const location = useLocation(); // Get the location object where path and state passed in the URL comes in
 

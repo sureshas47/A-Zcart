@@ -8,9 +8,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import baseUrl from "../utils/url";
 
 const Register = () => {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
   const [registerationInfo, setRegisterationInfo] = useState({});
 
   const navigate = useNavigate();

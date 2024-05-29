@@ -9,9 +9,9 @@ import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { useSelector } from "react-redux";
-import { domain } from "../../utils/url";
 
 function Checkout() {
+  const domain = import.meta.env.VITE_DOMAIN;
   const [formData, setFormData] = React.useState({});
   const { userData } = useSelector((state) => state?.user);
   const carts = useSelector((state) => state?.cart?.carts);

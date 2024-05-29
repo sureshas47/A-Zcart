@@ -9,9 +9,10 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { addProductToCart } from "../../Redux/features/cart/cartSlice";
-import { domain } from "../../utils/url";
 
 function Products({ products, isLoading, error }) {
+  const domain = import.meta.env.VITE_DOMAIN;
+
   const dispatch = useDispatch();
 
   const handleAddToCart = (e, product) => {

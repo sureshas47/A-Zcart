@@ -4,9 +4,9 @@ import Table from "react-bootstrap/Table";
 import Axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import baseUrl from "../../../utils/url";
 
 function ListCategories() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const [categories, setCategories] = useState([]);
 
   const fetchCategories = async () => {

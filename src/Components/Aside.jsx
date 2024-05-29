@@ -10,9 +10,9 @@ import {
 import "../App.css";
 import Axios from "axios";
 import { Row } from "react-bootstrap";
-import baseUrl from "../utils/url";
 
 export default function Aside() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const [categories, setCategories] = useState([]);
 
   const fetchCategories = async () => {
