@@ -29,17 +29,15 @@ const MyRoutes = () => {
       <Route element={<UserLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
-        <Route path="register" element={<Register />} />
-        <Route path="checkout" element={<Checkout />} />
       </Route>
 
       {/* Page route */}
       <Route element={<PageLayout />}>
         <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
         <Route path="cart" element={<Cart />} />
         <Route path="product/:productId" element={<ProductDetails />} />
         <Route path="checkout" element={<Checkout />} />
+        <Route path="register" element={<Register />} />
       </Route>
 
       {/* Admin route */}
