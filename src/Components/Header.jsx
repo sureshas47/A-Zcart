@@ -75,7 +75,7 @@ const Header = () => {
                     </Dropdown.Menu>
                   </Dropdown>
                 ) : (
-                  <Link to={"/A-Zcart/page/login"}>
+                  <Link to={"/login"}>
                     <FaUserLarge color="red" size={25} />
                   </Link>
                 )}
