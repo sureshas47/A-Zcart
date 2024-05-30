@@ -30,7 +30,7 @@ const Header = () => {
           <Container>
             <Row className="d-flex justify-content-between align-items-center w-100">
               <Col className="d-flex align-items-center">
-                <Link to={"/A-Zcart/user"} className="text-decoration-none">
+                <Link to={"/"} className="text-decoration-none">
                   <Navbar.Brand className="text-dark">A-Z Cart</Navbar.Brand>
                 </Link>
                 {/* <Navbar.Brand className="text-dark">A-Z Cart</Navbar.Brand> */}
@@ -45,10 +45,7 @@ const Header = () => {
                 </Form>
               </Col>
               <Col className="d-none d-md-flex align-items-center justify-content-end">
-                <Link
-                  to={"/A-Zcart/page/cart"}
-                  className="text-decoration-none"
-                >
+                <Link to={"/cart"} className="text-decoration-none">
                   <AiOutlineShoppingCart size={30} color="red" />
                   <sup
                     style={{
