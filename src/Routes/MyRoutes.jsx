@@ -26,15 +26,15 @@ const MyRoutes = () => {
     <Routes>
       {/* <Route path="/" element={<Home />} /> */}
       {/* User route */}
-      <Route path="/" element={<UserLayout />}>
-        <Route index element={<Home />} />
+      <Route element={<UserLayout />}>
+        <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="register" element={<Register />} />
         <Route path="checkout" element={<Checkout />} />
       </Route>
 
       {/* Page route */}
-      <Route path="/A-Zcart/page" element={<PageLayout />}>
+      <Route element={<PageLayout />}>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="cart" element={<Cart />} />
@@ -43,7 +43,7 @@ const MyRoutes = () => {
       </Route>
 
       {/* Admin route */}
-      <Route path="/A-Zcart/admin" element={<AdminLayout />}>
+      <Route element={<AdminLayout />}>
         <Route path="dashboard" element={<Admin />} />
         <Route path="unauthorized" element={<ErrorPage />} />
         <Route path="categories/create" element={<CreateCategory />} />
